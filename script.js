@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 "ad": "Mercimek Çorbası",
                 "malzemeler": ["mercimek", "soğan", "havuç"],
                 "tarif": "Soğanı doğrayın, havuçları rendeleyin. Tencerede soğanı kavurun, ardından mercimek ve havuçları ekleyin. Sıcak su ekleyerek pişirin.",
-                "resim": "mercimekcorba.jpg"
+                "resim": "./mercimekcorba.jpg"
             },
             {
                 "ad": "Domates Çorbası",
