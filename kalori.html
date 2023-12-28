@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemek Kalori Hesaplayıcı</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: whitesmoke;
+            position: relative;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 2.5%;
+            box-shadow: 0 0 5vw rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 1vw;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        select {
+            width: 100%;
+            margin: 2.5%;
+        }
+
+        #corbaSelect,
+        #anaYemekSelect,
+        #tatliSelect,
+        #icecekSelect {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 2.5% 2.5%;
+            margin-left: 0.75%;
+            font-size: 1.2vw;
+            color: #333;
+        }
+
+        #corbaSelect {
+            background-color: #f0f0f0;
+        }
+
+        #anaYemekSelect {
+            background-color: #f0f0f0;
+        }
+
+        #tatliSelect {
+            background-color: #f0f0f0;
+        }
+
+        #icecekSelect {
+            background-color: #f0f0f0;
+        }
+
+        .button {
+            position: fixed;
+            bottom: 15%;
+            left: 2%;
+            text-align: left;
+            margin: 0;
+            display: inline-block;
+            padding: 1.5% 2.5%;
+            font-size: 1vw;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #f4511e;
+            border: none;
+            border-radius: 1vw;
+            box-shadow: 0 0.5vw #999;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 0.5vw #666;
+            transform: translateY(0.4vw);
+        }
+
+        #toplamKalori {
+            margin-left: 5%;
+        }
+    </style>
+
+
+
+
+    <div id="background"></div>
+
+
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>Kategori</th>
+            <th>Ürün</th>
+        </tr>
+        <tr>
+            <td>Çorba</td>
+            <td>
+                <select id="corbaSelect"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Ana Yemek</td>
+            <td>
+                <select id="anaYemekSelect"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>Tatlı</td>
+            <td>
+                <select id="tatliSelect"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>İçecek</td>
+            <td>
+                <select id="icecekSelect"></select>
+            </td>
+        </tr>
+    </table>
+
+    <button class="button" onclick="urunleriTopla()">Kalori Hesapla</button>
+
+    <p id="toplamKalori">HESAPLAMA SONUCU : <span id="sonuc"></span></p>
+
+    <script>
+        const corbalarKalori = [
+            { "Mercimek Çorbası": 110 },
+            { "Domates Çorbası": 66 },
+            { "Kelle Paça Çorbası": 325 },
+            { "Ezogelin Çorbası": 91 },
+            { "Tavuk Suyu Çorbası": 132 },
+            { "Mantar Çorbası": 210 },
+            { "Brokolili Cheddar Çorbası": 80 },
+            { "Fasulye Çorbası": 137 },
+            { "Kabak Çorbası": 45 },
+            { "Mercimekli Yoğurt Çorbası": 110 }
+        ];
+
+        const anaYemeklerKalori = [
+            { "Fırın Tavuk": 465 },
+            { "Et Sote": 107 },
+            { "Karnabahar Graten": 215 },
+            { "Güveçte Tavuk": 185 },
+            { "Mantar Risotto": 360 },
+            { "Fırın Makarna": 380 },
+            { "Köfte Izgara": 220 },
+            { "Hünkar Beğendi": 400 },
+            { "Kuzu Tandır": 280 },
+            { "Fırın Sebzeli Somon": 250 }
+        ];
+
+        const tatlilarKalori = [
+            { "Çikolatalı Mousse": 460 },
+            { "Frambuazlı Cheesecake": 440 },
+            { "İncirli Magnolia": 430 },
+            { "Muzlu Rulo Pasta": 250 },
+            { "Çilekli Parfe": 205 },
+            { "Havuçlu Topkek": 214 },
+            { "Şeftalili Tart": 310 },
+            { "Karamelli Profiterol": 385 },
+            { "Portakallı Kek": 175 },
+            { "Limonlu Parfe": 235 }
+        ];
+
+        const iceceklerKalori = [
+            { "Mango Smoothie": 75 },
+            { "Çilek Limonata": 40 },
+            { "Naneli Limonata": 50 },
+            { "Ananas Kokteyli": 80 },
+            { "Elma Tarçın Çayı": 15 },
+            { "Şeftali Iced Tea": 40 },
+            { "Kavun Mojito": 217 },
+            { "Hurma Şerbeti": 250 },
+            { "Gül Şerbeti": 80 },
+            { "Vişne Limonata": 60 }
+        ];
+
+        const kategoriler = {
+            "Çorba": corbalarKalori,
+            "Ana Yemek": anaYemeklerKalori,
+            "Tatlı": tatlilarKalori,
+            "İçecek": iceceklerKalori
+        };
+
+        // Belirli bir kategoriye ait ürünleri seçim listesine ekleme işlemi
+        function kategoriyeUrunleriEkle(kategori, selectId) {
+            const select = document.getElementById(selectId);
+            select.innerHTML = "";
+
+            // burada kategorideki tüm ürünler option objesi oluşturularak select listesine eklenir
+            for (const urun of kategoriler[kategori]) {
+                const urunAdi = Object.keys(urun)[0];
+                const option = document.createElement("option");
+                option.value = urunAdi;
+                option.innerText = urunAdi;
+                select.appendChild(option);
+            }
+        }
+
+        function urunleriTopla() {
+            const corbaSelect = document.getElementById("corbaSelect");
+            const anaYemekSelect = document.getElementById("anaYemekSelect");
+            const tatliSelect = document.getElementById("tatliSelect");
+            const icecekSelect = document.getElementById("icecekSelect");
+
+            const secilenCorba = corbaSelect.value;
+            const secilenAnaYemek = anaYemekSelect.value;
+            const secilenTatli = tatliSelect.value;
+            const secilenIcecek = icecekSelect.value;
+
+            // buradan şu nesneye ulaşılır ornek olarak--> { "Mango Smoothie": 75 }
+            const corbaKalori = kategoriler["Çorba"].find(item => Object.keys(item)[0] === secilenCorba);
+            const anaYemekKalori = kategoriler["Ana Yemek"].find(item => Object.keys(item)[0] === secilenAnaYemek);
+            const tatliKalori = kategoriler["Tatlı"].find(item => Object.keys(item)[0] === secilenTatli);
+            const icecekKalori = kategoriler["İçecek"].find(item => Object.keys(item)[0] === secilenIcecek);
+
+            // Toplam kalori hesapla
+            const toplamKalori = (corbaKalori ? Object.values(corbaKalori)[0] : 0) +
+                (anaYemekKalori ? Object.values(anaYemekKalori)[0] : 0) +
+                (tatliKalori ? Object.values(tatliKalori)[0] : 0) +
+                (icecekKalori ? Object.values(icecekKalori)[0] : 0);
+
+            // Sonucu ekrana yazdır
+            document.getElementById("sonuc").innerText = toplamKalori + " kalori";
+            document.getElementById("sonuc").style.fontWeight = "bold";
+
+        }
+
+        window.onload = function () {
+            kategoriyeUrunleriEkle("Çorba", "corbaSelect");
+            kategoriyeUrunleriEkle("Ana Yemek", "anaYemekSelect");
+            kategoriyeUrunleriEkle("Tatlı", "tatliSelect");
+            kategoriyeUrunleriEkle("İçecek", "icecekSelect");
+        };
+    </script>
+
+</body>
+
+</html>
