@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Yemek Tarifi Sitesi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 10px;
-            background-color: #f2f2f2;
-        }
-
-        h1 {
-            color: #333;
-        }
-    </style>
 </head>
+
 <body>
-    <header>
-        <h1>Yemek Tarifi Sitesi</h1>
-    </header>
+    <h1>Yemek Tarifi Sitesi</h1>
 
-    <!-- Diğer sayfa içeriğini buraya ekleyebilirsiniz. -->
+    <div id="kategori-listesi">
+        <div class="kategori" id="corbalar">Çorbalar</div>
+        <div class="kategori" id="ana-yemek">Ana Yemekler</div>
+        <div class="kategori" id="tatlilar">Tatlılar</div>
+        <div class="kategori" id="icecekler">İçecekler</div>
+        <div class="kategori" id="kalorihesabi">Menü Kalori Hesaplama</div>
+        <div class="kategori" id="günlükkalorihesabi">Günlük Kalori İhtiyacım</div>
+    </div>
 
+    <div id="yemek-listesi"></div>
+
+    <div id="tarifEkraniArkasi">
+        <div id="tarif"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="Yemekler.js"></script>
 </body>
+
 </html>
