@@ -26,8 +26,15 @@
         }
 
         .baslik {
-            color: black;
-            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .form-control {
+            font-size: 1.1em;
+        }
+
+        #toplam-kaloriler {
+            font-size: 1.8em;
         }
 
         .secim-select {
@@ -82,7 +89,7 @@
             margin: 0;
             display: inline-block;
             padding: 2% 2.5%;
-            font-size: 1vw;
+            font-size: 2.2vw;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -113,22 +120,31 @@
         <div class="card">
             <h1 class="uygulama baslik">Günlük Kalori İhtiyacı Hesaplama Uygulaması</h1>
             <form id="kalori-formu">
-                <label for="yas">Yaş</label>
-                <input type="number" id="yas" class="form-control" placeholder="15-80 arası yaş girin">
-
-                <label><br>Cinsiyet</label>
-                <div id="form-radio">
-                    <input type="radio" id="erkek" name="cinsiyetRadio" class="erkek-input" checked="checked">
-                    <label class="erkek-label" for="erkek">Erkek</label>
-                    <input type="radio" id="kadin" name="cinsiyetRadio" class="kadin-input">
-                    <label class="kadin-label" for="kadin">Kadın</label>
+                <div class="form-group">
+                    <label for="yas">Yaş</label>
+                    <input type="number" id="yas" class="form-control" placeholder="15-80 arası yaş girin">
                 </div>
 
-                <label for="kilo">Kilo</label>
-                <input type="number" id="kilo" class="form-control" placeholder="Kilogram cinsinden">
+                <div class="form-group">
+                    <label>Cinsiyet</label>
+                    <div id="form-radio">
+                        <input type="radio" id="erkek" name="cinsiyetRadio" class="erkek-input" checked="checked">
+                        <label class="erkek-label" for="erkek">Erkek</label>
 
-                <label for="boy">Boy</label>
-                <input type="number" id="boy" class="form-control" placeholder="Santimetre cinsinden">
+                        <input type="radio" id="kadin" name="cinsiyetRadio" class="kadin-input">
+                        <label class="kadin-label" for="kadin">Kadın</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="kilo">Kilo</label>
+                    <input type="number" id="kilo" class="form-control" placeholder="Kilogram cinsinden">
+                </div>
+
+                <div class="form-group">
+                    <label for="boy">Boy</label>
+                    <input type="number" id="boy" class="form-control" placeholder="Santimetre cinsinden">
+                </div>
 
                 <label for="secim-select"><br>Aktivite</label>
                 <select class="secim-select" id="secim-select">
