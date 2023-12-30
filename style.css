@@ -13,20 +13,21 @@ h1 {
 
 #kategori-listesi {
     display: flex;
-    overflow-x: auto; 
     justify-content: center;
-    margin-bottom: 0 2%;
+    margin-bottom: 1%; 
 }
 
 .kategori {
     background-color: rgba(0, 0, 0, 0.7);
-    margin: 0 2%; 
-    padding: 1.5%;
-    max-width: 46%; 
+    margin: 0 1%; 
+    padding: 0.5%; 
+    max-width: 20%; 
     text-align: center;
-    border-radius: 10px;
+    border-radius: 3px; 
     cursor: pointer;
 }
+
+
 
 #yemek-listesi {
     display: flex;
@@ -65,3 +66,4 @@ h1 {
     text-align: left;
     box-shadow: 1% 2% 5px #888888; 
 }
+
